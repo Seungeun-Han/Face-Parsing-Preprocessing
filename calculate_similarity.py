@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 
-image1_dir = "D:/Dataset/CelebAMask-HQ/CelebA-HQ/test/images/00256.jpg"
+image1_dir = "D:/Dataset/CelebAMask-HQ/CelebA-HQ_256/test/images/00256.jpg"
 image2_dir = "C:/Users/USER/Downloads/MAT-main/MAT-main/CelebMaskRendering_256_results/00256_kf94.png"
 
 image1 = cv2.imread(image1_dir, cv2.IMREAD_COLOR)
