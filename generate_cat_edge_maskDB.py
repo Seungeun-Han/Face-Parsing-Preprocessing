@@ -43,10 +43,6 @@ def generate_cat_edge(seg, seg_name, edge_width=3):
 
 im_path = os.path.join('D:/Dataset/ETRI_MaskDB/image')
 image_list = os.listdir(im_path)
-#im = cv2.imread(im_path, cv2.IMREAD_COLOR)
-# image_list = [x for x in image_list if '-00' in x]
-# image_list = [x for x in image_list if 'IMG' in x]
-image_list = [x for x in image_list if '2022' in x]
 
 parsing_anno_path = os.path.join('D:/Dataset/ETRI_MaskDB/label_split/')
 annotation_list = os.listdir(parsing_anno_path)

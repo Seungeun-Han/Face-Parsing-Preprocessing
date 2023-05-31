@@ -78,42 +78,9 @@ def make_groundTruth(label, seg, seg_name):
     label = np.reshape(label, (h, -1))
     return label
 
-"""im_path = os.path.join('D:/Dataset/ETRI_MaskDB/mask_datasets/train/images/')
-image_list = os.listdir(im_path)
-#im = cv2.imread(im_path, cv2.IMREAD_COLOR)
-image_list = [x for x in image_list ]  # _ 조건 추가
-
-parsing_anno_path = os.path.join('C:/Users/USER/Downloads/package (2)/label_split')
-annotation_list = os.listdir(parsing_anno_path)
-
-save_dir = "C:/Users/USER/Downloads/package (2)/new_label/" #fast_labels
-for im_list in image_list:
-    start = time.time()
-    parent_img_name = im_list[:-4]
-    print(parent_img_name)
-    label = np.zeros((512, 512))
-    for idx, ann_list in enumerate(annotation_list):
-
-        if parent_img_name in ann_list:
-            #print(parsing_anno_path+ann_list)
-            annotation_path = os.path.join(parsing_anno_path , ann_list)
-            parsing_anno = cv2.imread(annotation_path, cv2.IMREAD_GRAYSCALE)
-            #print(ann_list[11:-4])
-            #print(parsing_anno)
-            label = make_groundTruth(label, parsing_anno, ann_list[9:-4])
-
-    label = cv2.resize(label, (473, 473), cv2.INTER_NEAREST)
-    if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
-    cv2.imwrite(save_dir + parent_img_name + ".png", label)
-    print("time :", time.time() - start)"""
 
 im_path = os.path.join('D:/Dataset/ETRI_MaskDB/image/')
 image_list = os.listdir(im_path)
-#im = cv2.imread(im_path, cv2.IMREAD_COLOR)
-image_list = [x for x in image_list if "-00" in x]  # 750개
-# image_list = [x for x in image_list if '2022' in x]
-# image_list = [x for x in image_list if 'IMG' in x]
 
 parsing_anno_path = os.path.join('D:/Dataset/ETRI_MaskDB/label_split/')
 annotation_list = os.listdir(parsing_anno_path)

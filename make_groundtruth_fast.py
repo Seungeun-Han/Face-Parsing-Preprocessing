@@ -76,8 +76,6 @@ def make_groundTruth(label, seg, seg_name):
 
 im_path = os.path.join('./images/')
 image_list = os.listdir(im_path)
-#im = cv2.imread(im_path, cv2.IMREAD_COLOR)
-image_list = [x for x in image_list if int(x[:-4]) >= 21000 and int(x[:-4]) < 24000]
 
 parsing_anno_path = os.path.join('./labels_sep/')
 annotation_list = os.listdir(parsing_anno_path)
