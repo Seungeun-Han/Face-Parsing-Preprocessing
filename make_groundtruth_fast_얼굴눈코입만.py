@@ -20,10 +20,10 @@ LABELS = {'bg': 0, 'skin': 1, 'hair': 2, 'nose': 3, 'eye_g': 4, 'mouth': 5,
         'l_lip': 6, 'r_eye': 7, 'neck': 8, 'l_eye': 9, 'hat': 10, 'l_ear': 11,
         'r_ear': 12, 'u_lip': 13, 'r_brow': 14, 'cloth': 15, 'l_brow': 16, 'ear_r': 17, 'neck_l': 18}"""
 
-# Ordered By Count
-LABELS = {'bg': 0, 'skin': 1, 'nose': 2, 'l_lip': 3, 'u_lip': 4, 'hair': 5,
-        'l_eye': 6, 'r_eye': 7, 'neck': 8, 'l_brow': 9, 'r_brow': 10, 'mouth': 11,
-        'cloth': 12, 'l_ear': 13, 'r_ear': 14, 'ear_r': 15, 'neck_l': 16, 'eye_g': 17, 'hat': 18}
+# 얼굴만
+LABELS = {'bg': 0, 'skin': 1, 'nose': 2, 'eye_g': 3, 'l_eye': 4, 'r_eye': 5,
+        'l_brow': 6, 'r_brow': 7, 'l_ear': 8, 'r_ear': 9, 'mouth': 10, 'u_lip': 11,
+        'l_lip': 12, 'hair': 13, 'hat': 14, 'ear_r': 15, 'neck': 16, 'cloth': 17, 'neck_l': 18}
 
 def make_groundTruth(label, seg, seg_name):
     """
@@ -95,14 +95,14 @@ def make_groundTruth(label, seg, seg_name):
 im_path = os.path.join('D:/Dataset/CelebAMask-HQ/CelebAMask-HQ/CelebA-HQ-img/')
 image_list = os.listdir(im_path)
 #im = cv2.imread(im_path, cv2.IMREAD_COLOR)
-image_list = [x for x in image_list if int(x[:-4]) < 20000 and int(x[:-4]) >= 10000] #  >= 10000 and int(x[:-4])
+image_list = [x for x in image_list if int(x[:-4]) < 10000] #  >= 10000 and int(x[:-4])
 
 parsing_anno_path = os.path.join('D:/Dataset/CelebAMask-HQ/CelebAMask-HQ/CelebAMask-HQ-mask-anno_acc/')
 annotation_list = os.listdir(parsing_anno_path)
 annotation_name_list = [i[:5] for i in annotation_list]
 annotation_name_list = list(set(annotation_name_list))
 
-save_dir = "D:/Dataset/CelebAMask-HQ/CelebA-HQ_473/labels_orderdByCount/" #fast_labels
+save_dir = "D:/Dataset/CelebAMask-HQ/CelebA-HQ_473/labels_orderdByScore/" #fast_labels
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 saved_list = os.listdir(save_dir)

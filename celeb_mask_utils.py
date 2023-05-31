@@ -3,30 +3,27 @@ import cv2
 import numpy as np
 import time
 
-"""path = "D:/Dataset/CelebAMask-HQ-mask/seg/"
+path = "D:/Dataset/CelebAMask-HQ-mask/CelebAMask-HQ-maskRendering_256_forsending/train/edges"
 label_list = os.listdir(path)
 
-
-i_path = "D:/Dataset/CelebAMask-HQ_v2/CelebAMask-HQ_v2/CelebA-HQ-img_full_masked/"
+i_path = "D:/Dataset/CelebAMask-HQ/CelebA-HQ_256_forsending/train/edges"
 image_list = os.listdir(i_path)
 
-s_path = "D:/Dataset/CelebAMask-HQ-mask/images/"""
+# s_path = "D:/Dataset/CelebAMask-HQ-mask/images/
 """error_list = os.listdir(s_path)
 error_list = [i[:-4] for i in error_list]"""
 # error_list = [int(i[:-4]) for i in error_list]
 # print(len(error_list), error_list)
 
-"""n_list = [i for i in range(0, 30000)]
-# print(n_list)
-label_list = [int(i[:-9]) for i in label_list]
-
-print(set(n_list) - set(error_list+label_list))"""
-
-"""for i in label_list:
-    if i[:-9] in error_list:
-        # image = cv2.imread(path + i, cv2.IMREAD_GRAYSCALE)
-        print(i)
-        os.remove(path + i)"""
+n_list = [i[:-4] for i in image_list]
+print(len(n_list))
+label_list = [i[:-9] for i in label_list]
+print(len(label_list))
+remove_list = list(set(n_list) - set(label_list))
+print(len(remove_list))
+for i in remove_list:
+#     print(i)
+    os.remove(os.path.join(i_path, i+".png"))
 
 def from_imagefolder_to_savefolder():
     path = "D:/Dataset/CelebAMask-HQ-mask/seg/"
@@ -136,5 +133,3 @@ def labeling():
             image = np.reshape(image, (h, -1))
             cv2.imwrite(s_path+i, image)
             # print("time :", time.time() - start)
-
-labeling()
