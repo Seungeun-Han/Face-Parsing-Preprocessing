@@ -1,3 +1,5 @@
+# Copyright (c) 한승은. All rights reserved.
+
 import os
 
 upper_path = os.path.join(r'D:\Dataset\230703_tagging_samples\CCTV_DB_Dataset\annotations')
