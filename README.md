@@ -15,9 +15,14 @@ Face Parsing Task를 수행하기 위한 전처리 알고리즘 코드입니다.
 
 <br>
 
-### 0or1_check.py
+<hr>
+
+### [0or1_check.py](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/blob/main/0or1_check.py)
 
 This code is designed to verify whether all pixel values in the image are 0~1 or not.
 
+<br>
+
+<hr>
 
 
