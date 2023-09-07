@@ -3,27 +3,21 @@ import cv2
 import numpy as np
 import time
 
-path = "D:/Dataset/CelebAMask-HQ-mask/CelebAMask-HQ-maskRendering_256_forsending/train/edges"
-label_list = os.listdir(path)
-
-i_path = "D:/Dataset/CelebAMask-HQ/CelebA-HQ_256_forsending/train/edges"
-image_list = os.listdir(i_path)
-
-# s_path = "D:/Dataset/CelebAMask-HQ-mask/images/
-"""error_list = os.listdir(s_path)
-error_list = [i[:-4] for i in error_list]"""
-# error_list = [int(i[:-4]) for i in error_list]
-# print(len(error_list), error_list)
-
-n_list = [i[:-4] for i in image_list]
-print(len(n_list))
-label_list = [i[:-9] for i in label_list]
-print(len(label_list))
-remove_list = list(set(n_list) - set(label_list))
-print(len(remove_list))
-for i in remove_list:
-#     print(i)
-    os.remove(os.path.join(i_path, i+".png"))
+# original_path = "D:/Dataset/CelebAMask-HQ/noNecklace_CelebAMask-HQ_256/test/images"
+# original_list = os.listdir(original_path)
+#
+#
+# remove_path = "D:/Dataset/CelebAMask-HQ/necklace_CelebAMask-HQ_256/test/images"
+# remove_list = os.listdir(remove_path)
+#
+#
+# print(len(list(set(original_list) - set(remove_list))))
+#
+# for i in original_list:
+#     if i in remove_list:
+#         # image = cv2.imread(path + i, cv2.IMREAD_GRAYSCALE)
+#         print(i)
+#         os.remove(os.path.join(original_path,i))
 
 def from_imagefolder_to_savefolder():
     path = "D:/Dataset/CelebAMask-HQ-mask/seg/"
@@ -57,6 +51,25 @@ def from_celebLabelFolder_to_maskFolder():
             image = cv2.imread(anno_path + i, cv2.IMREAD_GRAYSCALE)
             cv2.imwrite(s_path + i, image)
 
+def from_celebLabelFolder_to_per_subject_folder():
+    anno_path = "D:/Dataset/CelebAMask-HQ/CelebAMask-HQ/CelebAMask-HQ-mask-anno_acc/"
+    anno_list = os.listdir(anno_path)
+    annotation_name_list = [i[:5] for i in anno_list]
+    annotation_name_list = list(set(annotation_name_list))
+
+    s_path = "D:/Dataset/CelebAMask-HQ/CelebAMask-HQ_perSubject"
+
+    for i in annotation_name_list:
+        to_save_path = os.path.join(s_path, i)
+        if not os.path.exists(to_save_path):
+            os.makedirs(to_save_path)
+        to_save_list = [l for l in anno_list if i in l]
+        print(to_save_list)
+
+        for img in to_save_list:
+            image = cv2.imread(os.path.join(anno_path, img), cv2.IMREAD_GRAYSCALE)
+            cv2.imwrite(os.path.join(to_save_path, img), image)
+
 def change_name_to_5blanks():
     path = "D:/Dataset/CelebAMask-HQ-mask/images/"
     list = os.listdir(path)
@@ -84,25 +97,30 @@ def change_name_to_5blanks_and_toPng():
         cv2.imwrite(s_path + i[:-9].zfill(5) + i[-9:-3] + 'png', image)
 
 def opening_or_erode_or_closing():
-    path = 'D:/Dataset/CelebAMask-HQ-mask/seg_1024png/'
+    path = r'D:\Dataset\230703_tagging_samples\intern02_tagging_results\Cap/'
     list = os.listdir(path)
-    list = [i for i in list if "kf94" in i]
+    # list = [i for i in list if "kf94" in i]
 
-    s_path = "D:/Dataset/CelebAMask-HQ-mask/seg_1024png/"
+    s_path = r"D:\Dataset\230703_tagging_samples\CCTV_DB_Dataset\annotations/"
     if not os.path.exists(s_path):
         os.makedirs(s_path)
 
     kernel = np.ones((3, 3), np.uint8)
 
-    for i in list:
-        print(i)
-        image = cv2.imread(path + i, cv2.IMREAD_GRAYSCALE)
-        # image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
-        image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
-        # image = cv2.erode(image, kernel)
-        # image *= 255
+    for l in list:
+        sub_path = os.path.join(path, l)
+        sub_list = os.listdir(sub_path)
+        for i in sub_list:
+            # if ".jpg" in i:
+            #     print(sub_path)
+            print(i)
+            image = cv2.imread(os.path.join(sub_path, i), cv2.IMREAD_GRAYSCALE)  # IMREAD_COLOR
+            # image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
+            image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
+            # image = cv2.erode(image, kernel)
+            # image *= 255
 
-        cv2.imwrite(s_path+i, image)
+            cv2.imwrite(os.path.join(s_path, i), image)
 
 def labeling():
     path = 'D:/Dataset/CelebAMask-HQ-mask/seg_1024png/'
@@ -133,3 +151,6 @@ def labeling():
             image = np.reshape(image, (h, -1))
             cv2.imwrite(s_path+i, image)
             # print("time :", time.time() - start)
+
+
+opening_or_erode_or_closing()
