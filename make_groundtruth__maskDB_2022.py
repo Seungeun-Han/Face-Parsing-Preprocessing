@@ -111,21 +111,21 @@ for im_list in image_list:
 im_path = os.path.join('D:/Dataset/ETRI_MaskDB/image/')
 image_list = os.listdir(im_path)
 #im = cv2.imread(im_path, cv2.IMREAD_COLOR)
-image_list = [x for x in image_list if "-00" in x]  # 750개
-# image_list = [x for x in image_list if '2022' in x]
+# image_list = [x for x in image_list if "-00" in x]
+image_list = [x for x in image_list if '2022' in x]  # 125개
 # image_list = [x for x in image_list if 'IMG' in x]
 
 parsing_anno_path = os.path.join('D:/Dataset/ETRI_MaskDB/label_split/')
 annotation_list = os.listdir(parsing_anno_path)
 
-save_dir = "D:/Dataset/ETRI_MaskDB/ETRI_MaskDB_473/labels_necklace_Last/"
+save_dir = "D:/Dataset/ETRI_MaskDB/ETRI_MaskDB_112/labels_necklace_Last/"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 saved_list = os.listdir(save_dir)
 image_list = [i for i in image_list if i[:-4] + ".png" not in saved_list]
 print(len(image_list))
 
-INPUT_SIZE = 473
+INPUT_SIZE = 112
 
 for im_list in image_list:
     start = time.time()
@@ -139,8 +139,7 @@ for im_list in image_list:
             parsing_anno = cv2.imread(annotation_path, cv2.IMREAD_GRAYSCALE)
             parsing_anno = cv2.resize(parsing_anno, (INPUT_SIZE, INPUT_SIZE), cv2.INTER_NEAREST)
 
-            #print(ann_list[6:-4])
-            label = make_groundTruth(label, parsing_anno, ann_list[11:-4])
+            label = make_groundTruth(label, parsing_anno, ann_list[16:-4])
             # edge = generate_cat_edge(parsing_anno, ann_list[11:-4])
             # edge = generate_cat_edge(parsing_anno, ann_list[16:-4])
             # edge = generate_cat_edge(parsing_anno, ann_list[9:-4])
