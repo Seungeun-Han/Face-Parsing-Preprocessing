@@ -16,7 +16,7 @@ def generate_edge(label_dir, edge_dir, size = 473):
     saved_list = os.listdir(edge_dir)
     ll = [i for i in ll if i[:-4] + ".png" not in saved_list]
 
-    ll = [x for x in ll if int(x[:5]) < 10000 and int(x[:5]) >= 5000]  #  and int(x[:-4]) >= 10000)
+    # ll = [x for x in ll if int(x[:5]) < 10000 and int(x[:5]) >= 5000]  #  and int(x[:-4]) >= 10000)
     print(len(ll))
 
     for filename in ll:
@@ -35,4 +35,4 @@ def generate_edge(label_dir, edge_dir, size = 473):
                             edge[i,j] = 1
         cv2.imwrite(osp.join(edge_dir, filename), edge)
 
-generate_edge(r"D:\Dataset\CelebAMask-HQ-hand\CelebAMask-HQ-hand_473\labels/", r"D:\Dataset\CelebAMask-HQ-hand\CelebAMask-HQ-hand_473\edges/", size=256)
+generate_edge(r"./CelebAMask-HQ/labels/", r"./CelebAMask-HQ-hand/edges/")
