@@ -52,3 +52,22 @@ Helen Dataset은 각 이미지별 landmark 정보가 있는 landmark_txt.txt 파
 <br>
 
 <hr>
+
+### [LaPa_align.py](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/blob/main/LaPa_align.py)
+위의 경우와 동일합니다.
+
+#### Example
+왼/오른쪽 눈, 코, 왼/오른쪽 입 끝 부분을 [[182, 229], [295, 229], [238, 301], [190, 349], [288, 349]]로 옮기고, (473x473) 사이즈로 자른 예시입니다.
+
+- Input Image
+
+![2569520_1](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/assets/101082685/87551015-622c-4f52-b850-d630b3411324)
+
+- Output Image
+
+![2569520_1](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/assets/101082685/80d00ad8-b21c-4f6b-add8-c9e7c5f52b21)
+
+<br>
+
+<hr>
+
