@@ -77,3 +77,28 @@ http://www.ifp.illinois.edu/~vuongle2/helen/
 
 <hr>
 
+### [Write_TXT_List.py](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/blob/main/Write_TXT_List.py)
+Face Parsing 학습에 사용되는 train_list.txt, valid_lisst.txt, test_list.txt를 만드는 코드입니다.
+
+train_list.txt를 만들기 위해서는 데이터셋의 train/images 폴더 내의 이미지 파일 이름을 읽어와야합니다.
+그러기 위해 코드 내의 __input_path__ 변수를 당신의 경로에 맞게 변경하여야 합니다.
+
+```
+input_path = '$your_dataset_path&/train/images'
+```
+
+그 결과 train_list.txt 는 다음과 같이 저장됩니다.
+
+```
+'images/10001868414_0.jpg labels/10001868414_0.png'
+'images/10009865324_0.jpg labels/10009865324_0.png'
+'images/10012551673_5.jpg labels/10012551673_5.png'
+ ...
+```
+
+<br>
+
+<hr>
+
+
+
