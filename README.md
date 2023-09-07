@@ -25,4 +25,30 @@ This code is designed to verify whether all pixel values in the image are 0~1 or
 
 <hr>
 
+### [Helen_align.py](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/tree/main)
+Helen Dataset을 Face Align 하는 코드입니다.
 
+Helen Dataset은 face가 align이 되어있지 않고, size가 다른 데이터셋입니다.
+
+이 데이터셋을 그대로 학습에 넣을 수 있지만, 더 효과적인 학습을 위해 align 한 뒤의 얼굴을 넣을 수도 있습니다.
+
+Helen Dataset은 각 이미지별 landmark 정보가 있는 landmark_txt.txt 파일을 제공합니다.
+
+여기에서 왼/오른쪽 눈, 코, 왼/오른쪽 입 끝 부분에 대한 위치는 각각 105, 106, 55, 85, 101 번째 라인에 저장되어있습니다.
+
+이를 저희가 설정한 포인트들로 align하고, 원하는 크기로 자르면 최종적으로 Face Align이 완료됩니다.
+
+#### Example
+왼/오른쪽 눈, 코, 왼/오른쪽 입 끝 부분을 [[182, 229], [295, 229], [238, 301], [190, 349], [288, 349]]로 옮기고, (473x473) 사이즈로 자른 예시입니다.
+
+- Input Image
+
+![30427236_2](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/assets/101082685/e4ba2bfb-b379-408a-bbfc-e9740e1fcd0a)
+
+- Output Image
+
+![30427236_2](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/assets/101082685/06333639-ba65-488b-93d4-090e875e61b7)
+
+<br>
+
+<hr>
