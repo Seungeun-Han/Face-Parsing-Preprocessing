@@ -66,7 +66,7 @@ http://www.ifp.illinois.edu/~vuongle2/helen/
 왼/오른쪽 눈, 코, 왼/오른쪽 입 끝 부분을 [[182, 229], [295, 229], [238, 301], [190, 349], [288, 349]]로 옮기고, (473x473) 사이즈로 자른 예시입니다.
 
 - Input Image
-- 
+
 ![3013103_0](https://github.com/Seungeun-Han/Face-Parsing-Preprocessing/assets/101082685/9ebadc75-1337-45d2-8dbb-7bde0eec0855)
 
 - Output Image
